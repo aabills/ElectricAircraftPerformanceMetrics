@@ -1,0 +1,146 @@
+A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P
+"",check,1,,,,,,,,,,,"Calculate efficiency of C/5 discharge from cell design on left",<undefined>,NaN
+"",check,1,,,,,,,,,,,"Calculate efficiency of C/5 discharge from cell design on left",<undefined>,NaN
+"Total pack energy",kWh,128,,,,,,,,,,,"Total pack energy",kWh,128
+"Total pack power",kW,87.73,,,,,,,,,,,"Total pack power",kW,87.73
+"Calculated pack power at V/U",kW,87.7300000000075,,,,,,,,,,,"",<undefined>,NaN
+"Number of cells",<undefined>,240,,,,,,,,,,,"Number of cells",<undefined>,240
+"Pack area required",m2,1230.68535513552,,,,,,,,,,,"Pack area required",m2,1230.68535513552
+"Thermodynamic cell voltage, U",V,2.96,,,,,,,,,,,"Thermodynamic cell voltage, U",V,2.96
+"Cell area",cm2,51278.5564639801,,,,,,,,,,,"Cell area",cm2,51278.5564639801
+"Number of layers per cell",<undefined>,104,,,,,,,,,,,"Number of layers per cell",<undefined>,104
+"Layer area",cm2,493.063042922886,,,,,,,,,,,"Layer area",cm2,493.063042922886
+"Cell voltage at rated power",V,2.368,,,,,,,,,,,"Cell voltage at rated power",V,2.368
+"  Calc cell voltage at rated power",V,2.36800000000001,,,,,,,,,,,"",<undefined>,NaN
+"Current at rated power",A/cm2,0.0030103666820521,,,,,,,,,,,"  Fraction of OCV at C/5",V/U,0.887343069755034
+"  Calc current at rated power",A/cm2,0.00301036668205223,,,,,,,,,,,"  Calc cell voltage for energy",V,2.6265354864749
+"Current for energy, C/5",A/cm2,0.000791971694345354,,,,,,,,,,,"Current for energy, C/5",A/cm2,0.000791971694345354
+"Specific capacity, C",mAh/cm2,3.95985847172704,,,,,,,,,,,"Capacity, C",mAh/cm2,3.95985847172704
+"Cell capacity, Q",Ah,203.055826231811,,,,,,,,,,,"Cell capacity, Q",Ah,203.055826231811
+"Iterate current (1 = yes, 0 = reset)",<undefined>,1,,,,,,,,,,,"",<undefined>,NaN
+"Iterate positive (1 = yes, 0 = reset)",<undefined>,1,,,,,,,,,,,"Iterate positive (1 = yes, 0 = reset)",<undefined>,1
+"Warning",<undefined>,NaN,,,,,,,,,,,"Warning",<undefined>,NaN
+"Impedance source",units,NaN,,,,,,,,,,,"Impedance source",units,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"Lithium metal electrode",Electrodissolution/deposition between ceramic-buffer-layer and metal interface,NaN,,,,,,,,,,,"Lithium metal electrode",Electrodissolution/deposition between ceramic-buffer-layer and metal interface,NaN
+"  N:P ratio",mAh/mAh,1.5,,,,,,,,,,,"  N:P ratio",mAh/mAh,1.5
+"  Thickness, L",cm,0.00290265387674058,,,,,,,,,,,"  Thickness, L",cm,0.00290265387674058
+"  Kinetic model",<undefined>,NaN,,,,,,,,,,,"  Kinetic model",<undefined>,NaN
+"  Exchange current, i0",A/cm2,0.0001,,,,,,,,,,,"  Exchange current, i0",A/cm2,0.0001
+"  Transfer coefficent, a",<undefined>,0.5,,,,,,,,,,,"  Transfer coefficent, a",<undefined>,0.5
+"  Surface overpotential, h",V,0.177851095734825,,,,,,,,,,,"  Surface overpotential, h",V,0.108876849180879
+"    ASI",Ohm cm2,59.079545623189,,,,,,,,,,,"    ASI",Ohm cm2,137.475682474835
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"Ceramic electrolyte",Conduction of Li+ through ceramic,NaN,,,,,,,,,,,"Ceramic electrolyte",Conduction of Li+ through ceramic,NaN
+"  Thickness",cm,0.002,,,,,,,,,,,"  Thickness",cm,0.002
+"  Bulk ionic conductivity, k",S/cm,0.0001,,,,,,,,,,,"  Bulk ionic conductivity, k",S/cm,0.0001
+"  Overpotential, h",V,0.060207333641042,,,,,,,,,,,"  Overpotential, h",V,0.0158394338869071
+"    ASI",Ohm cm2,20,,,,,,,,,,,"    ASI",Ohm cm2,20
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"Ceramic intercalation kinetics",Charge transfer between liquid electroltye and solid ceramic electrolyte,NaN,,,,,,,,,,,"Ceramic intercalation kinetics",Charge transfer between liquid electroltye and solid ceramic electrolyte,NaN
+"  Kinetic model",<undefined>,NaN,,,,,,,,,,,"  Kinetic model",<undefined>,NaN
+"  Exchange current, i0",A/cm2,0.0001,,,,,,,,,,,"  Exchange current, i0",A/cm2,0.0001
+"  Transfer coefficent, a",<undefined>,0.5,,,,,,,,,,,"  Transfer coefficent, a",<undefined>,0.5
+"  Overpotential, h",V,0.177851095734825,,,,,,,,,,,"  Overpotential, h",V,0.108876849180879
+"    ASI",Ohm cm2,59.079545623189,,,,,,,,,,,"    ASI",Ohm cm2,137.475682474835
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"Positive porous electrode",Carbon felt-like composite electrode material,NaN,,,,,,,,,,,"Positive porous electrode",Compression resiliant carbon felt-like composite electrode material,NaN
+"  Discharged volume fraction, e",mAh/cm3,2698.08,,,,,,,,,,,"  Discharged volume fraction, e",mAh/cm3,2698.08
+"    Active material (product)",cm3/cm3,0.6,,,,,,,,,,,"    Active material (product)",cm3/cm3,0.6
+"    Electrolyte",cm3/cm3,0.25,,,,,,,,,,,"    Electrolyte",cm3/cm3,0.25
+"    Carbon felt/matrix",cm3/cm3,0.1,,,,,,,,,,,"    Carbon felt/matrix",cm3/cm3,0.1
+"  Thickness, L",cm,0.00244609652773271,,,,,,,,,,,"  Thickness, L",cm,0.00244609652773271
+"  Specific interfacial area, a",cm2/cm3,5000,,,,,,,,,,,"  Specific interfacial area, a",cm2/cm3,5000
+"     Roughness factor",cm2/cm2,12.2304826386635,,,,,,,,,,,"     Roughness factor",cm2/cm2,12.2304826386635
+"  Electrolyte conductivity, keff",S/cm,0.00125,,,,,,,,,,,"  Electrolyte conductivity, keff",S/cm,0.00125
+"  Matrix conductivity, seff",S/cm,3.16227766016838,,,,,,,,,,,"  Matrix conductivity, seff",S/cm,3.16227766016838
+" Test for Tafel applicability",<undefined>,NaN,,,,,,,,,,," Test for Tafel applicability",<undefined>,NaN
+" Newman and Tobias expression",<undefined>,NaN,,,,,,,,,,," Newman and Tobias expression",<undefined>,NaN
+"    Exchange current, i0",A/cm2,1e-05,,,,,,,,,,,"    Exchange current, i0",A/cm2,1e-05
+"    Transfer coefficent, a",<undefined>,0.5,,,,,,,,,,,"    Transfer coefficent, a",<undefined>,0.5
+"    (1-a)F/RT, b",1/V,19.1494385864896,,,,,,,,,,,"    (1-a)F/RT, b",1/V,19.1494385864896
+"    Dimensionless current, d",N/A,0.112852363465085,,,,,,,,,,,"    Dimensionless current, d",N/A,0.0296893657630423
+"    Epsilon, e",N/A,0.112807772277814,,,,,,,,,,,"    Epsilon, e",N/A,0.0296776346479106
+"    theta iterate, q",radians,0.235333613632083,,,,,,,,,,,"    theta iterate, q",radians,0.121538490100314
+"    placeholder, tan( q )",N/A,0.239776469502855,,,,,,,,,,,"    placeholder, tan( q )",N/A,0.122140486839297
+"    tan( q )",N/A,0.239776469502929,,,,,,,,,,,"    tan( q )",N/A,0.122140486839328
+"    Si, y",N/A,0.235238873262409,,,,,,,,,,,"    Si, y",N/A,0.121490229195043
+"  Overpotential, h= f1(L)-f2(0)",V,0.169221580445174,,,,,,,,,,,"  Overpotential, h= f1(L)-f2(0)",V,0.0980643024233477
+" Euler and Nonnenmacher expression",<undefined>,NaN,,,,,,,,,,," Euler and Nonnenmacher expression",<undefined>,NaN
+"   Dimnsnlss. current density,u",N/A,0.0957645848440626,,,,,,,,,,,"   Dimnsnlss. current density,u",N/A,0.0957645848440626
+"  Overpotential, h= f1(L)-f2(0)",V,0.644569181967693,,,,,,,,,,,"  Overpotential, h= f1(L)-f2(0)",V,0.169574208420939
+"  ASI for porous electrode",Ohm cm2,56.2129462347821,,,,,,,,,,,"  ASI for porous electrode",Ohm cm2,123.82298903297
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"Current collector",<undefined>,NaN,,,,,,,,,,,"Current collector",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"  Overpotential, h",V,0.00686889444412784,,,,,,,,,,,"  Overpotential, h",V,0.00180707885309407
+"    ASI",Ohm cm2,2.28174676695694,,,,,,,,,,,"    ASI",Ohm cm2,2.28174676695694
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"Rated Power, 2C pulse",<undefined>,NaN,,,,,,,,,,,"Rated Energy, C/3 discharge",<undefined>,NaN
+"Total cell ASI",Ohm cm2,196.653784248117,,,,,,,,,,,"Total cell ASI",Ohm cm2,421.056100749596
+"Total overpotential",V,0.591999999999994,,,,,,,,,,,"Total overpotential",V,0.333464513525106
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"Overpotential as function of cell region",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",1,0,,,,,,,,,,,"",<undefined>,NaN
+"",1,0.177851095734816,,,,,,,,,,,"",<undefined>,NaN
+"",2,0.238058429375847,,,,,,,,,,,"",<undefined>,NaN
+"",2,0.415909525110663,,,,,,,,,,,"",<undefined>,NaN
+"",2,0.58513110555584,,,,,,,,,,,"",<undefined>,NaN
+"",3,0.58513110555584,,,,,,,,,,,"",<undefined>,NaN
+"",3,0.591999999999967,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"Cell Capacity Parameters Inputs From Battery Design",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"Positive electrode capacity, Ah/cm3",<undefined>,1.618848,,,,,,,,,,,"",<undefined>,NaN
+"Negative electrode capacity, Ah/cm3",<undefined>,2.04633,,,,,,,,,,,"",<undefined>,NaN
+"Negative-to-positive capacity ratio after formation",<undefined>,1.5,,,,,,,,,,,"",<undefined>,NaN
+"Maximum allowable positive electrode coating thickness",mm,200,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"Electrode Thickness and Area Results",<undefined>,NaN,,,,,,,,,,,"",<undefined>,NaN
+"Negative-to-positive electrode thickness ratio",<undefined>,1.1866473149492,,,,,,,,,,,"",<undefined>,NaN
+"Positive electrode thickness",mm,24.4609652773271,,,,,,,,,,,"",<undefined>,NaN
+"Negative electrode thickness",mm,29.0265387674058,,,,,,,,,,,"",<undefined>,NaN
+"Positive electrode thickness at adjusted % OCV",mm,24.4609652773271,,,,,,,,,,,"",<undefined>,NaN
+"Negative electrode thickness at adjusted % OCV",mm,29.0265387674058,,,,,,,,,,,"",<undefined>,NaN
+"Cell area, cm2",cm2,51278.5564639767,,,,,,,,,,,"",<undefined>,NaN
+"Layer area, Alayer",cm2,493.063042922853,,,,,,,,,,,"",<undefined>,NaN
+"Number of layers per cell, Nlayer",<undefined>,104,,,,,,,,,,,"",<undefined>,NaN
+"Pack area, m2",m2,1230.68535513544,,,,,,,,,,,"",<undefined>,NaN
+"Ip",A/cm2,0.00301036668205156,,,,,,,,,,,"",<undefined>,NaN
+"Vp",V,2.36800000000004,,,,,,,,,,,"",<undefined>,NaN
+"Ve",V,2.6265354864749,,,,,,,,,,,"",<undefined>,NaN
+"ASIp",Ohm cm2,196.653784248143,,,,,,,,,,,"",<undefined>,NaN
+"ASIe",Ohm cm2,421.056100749625,,,,,,,,,,,"",<undefined>,NaN
+"Vp/U",<undefined>,0.800000000000014,,,,,,,,,,,"",<undefined>,NaN
+"  Fraction of OCV at C/5 (Ve/U)",<undefined>,0.887343069755034,,,,,,,,,,,"",<undefined>,NaN
+"Check",<undefined>,0.00383501014476256,,,,,,,,,,,"",<undefined>,NaN
