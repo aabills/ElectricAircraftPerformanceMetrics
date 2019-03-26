@@ -1,15 +1,13 @@
 
-include("importdata.jl")
-include("even.jl")
-include("odd.jl")
+batterydesign, chem, components,flowandsys,iterativeiv,ivthickness=initialize()
 max_iter=4
 for n=1:max_iter
-    include("flowandsys_new.jl")
-    include("iterativeiv_new.jl")
-    include("ivthickness_new.jl")
-    include("batterydesign_new.jl")
+    flowandsys_new(flowandsys,iterativeiv)
+    iterativeiv_new(iterativeiv,flowandsys)
+    ivthickness_new(ivthickness,flowandsys,iterativeiv)
+    batterydesign_new(batterydesign,chem,iterativeiv,flowandsys)
 end
-using Printf
+
 @printf("Power, [kW]: %f\n",batterydesign.F[200])
 @printf("Energy, [kWh]: %f\n",batterydesign.F[201])
 @printf("Usable Energy, [kWh] %f\n" ,batterydesign.F[202])

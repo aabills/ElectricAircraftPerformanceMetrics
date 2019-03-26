@@ -1,3 +1,4 @@
+function ivthickness_new(ivthickness,flowandsys,iterativeiv)
 # Address	Formula
 ## IV Thickness
 ivthickness.P[3]	 =ivthickness.C[3]
@@ -202,3 +203,5 @@ end
 # ivthickness.C[92]	 =IF[ivthickness.C[60]="Use Tafel",ivthickness.C[71]+ivthickness.C[91],ivthickness.C[74]+ivthickness.C[91]]
 ivthickness.C[93]	 =ivthickness.C[92]
 ivthickness.C[94]	 =ivthickness.C[93]+ivthickness.C[79]
+    
+end

@@ -1,5 +1,6 @@
 # Address	Formula
 ## flow and system()
+function flowandsys_new(flowandsys,iterativeiv)
 flowandsys.C[9] = 5000;#Totalpower
 flowandsys.C[10] = 6500;#Total energy 
 
@@ -57,3 +58,4 @@ flowandsys.C[103]	 =flowandsys.C[102]*(1-flowandsys.C[6])/flowandsys.C[6]
 flowandsys.C[104]	 =32*flowandsys.C[102]+28*flowandsys.C[103]
 flowandsys.C[105]	 =flowandsys.C[104]*flowandsys.C[94]*((flowandsys.C[15]/101.3)^flowandsys.C[96]-1)/flowandsys.C[93]*(flowandsys.C[17]+273)/1000
 flowandsys.C[106]	 =flowandsys.C[105]*5
+end

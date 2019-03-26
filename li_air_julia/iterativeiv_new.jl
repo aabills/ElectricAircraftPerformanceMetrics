@@ -2,7 +2,7 @@
 ## Iterative I-V
 # iterativeiv.C[19]=0
 # iterativeiv.C[20]=0
-
+function iterativeiv_new(iterativeiv,flowandsys)
 iterativeiv.C[3]	 =flowandsys.C[10]
 iterativeiv.C[4]	 =flowandsys.C[28]
 iterativeiv.C[2]	 =iterativeiv.C[9]/(iterativeiv.C[10]*iterativeiv.C[11])
@@ -246,3 +246,4 @@ iterativeiv.P[79]	 =iterativeiv.P[80]*iterativeiv.P[16]
 iterativeiv.P[80]	 =iterativeiv.C[80]
 iterativeiv.P[83]	 =iterativeiv.P[80]+iterativeiv.P[75]+iterativeiv.P[48]+iterativeiv.P[41]+iterativeiv.P[35];#+iterativeiv.P[26]
 iterativeiv.P[84]	 =iterativeiv.P[83]*iterativeiv.P[16]
+end
