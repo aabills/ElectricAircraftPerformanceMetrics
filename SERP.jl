@@ -27,7 +27,6 @@ energyused=sum(airplane.powerProfile)/3600;
 energyrequired=energyused/.7;
 specific_energy=energyrequired/battmass
 max_power=maximum(airplane.powerProfile);
-    plot(airplane.PowerProfile);
 specific_power=max_power/battmass
 energyrequired=energyrequired/1000;
 return  specific_energy,specific_power,airplane
