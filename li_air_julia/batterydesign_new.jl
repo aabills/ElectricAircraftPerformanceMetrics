@@ -1,22 +1,22 @@
 function batterydesign_new(batterydesign,chem,iterativeiv,flowandsys)
 # Address	Formula
 ## Battery Design
-#assumed to be open but can be changed to enclosed as well - edit() 
+#assumed to be open but can be changed to enclosed as well - edit()
 batterydesign.D[6]	 =((batterydesign.C[6]*batterydesign.E[6])/((batterydesign.C[6]*batterydesign.E[6])+(batterydesign.C[7]*batterydesign.E[7])+(batterydesign.C[8]*batterydesign.E[8])))*100
 # batterydesign.D[6]	 =IF[chem.E[8]="Enclosed",chem.E[14],batterydesign.C[6]*batterydesign.E[6]/(batterydesign.C[6]*batterydesign.E[6]+batterydesign.C[7]*batterydesign.E[7]+batterydesign.C[8]*batterydesign.E[8])*100]
 batterydesign.E[6]	 =chem.E[20]
 batterydesign.F[6]	 =batterydesign.F[77]/batterydesign.F[38]*1000
-#assumed to be open but can be changed to enclosed as well - edit() 
+#assumed to be open but can be changed to enclosed as well - edit()
 batterydesign.D[7]	 =batterydesign.C[7]*batterydesign.E[7]/(batterydesign.C[6]*batterydesign.E[6]+batterydesign.C[7]*batterydesign.E[7]+batterydesign.C[8]*batterydesign.E[8])*100
 # batterydesign.D[7]	 =IF[chem.E[8]="Enclosed",chem.E[15],batterydesign.C[7]*batterydesign.E[7]/(batterydesign.C[6]*batterydesign.E[6]+batterydesign.C[7]*batterydesign.E[7]+batterydesign.C[8]*batterydesign.E[8])*100]
 batterydesign.E[7]	 =chem.E[21]
 batterydesign.F[7]	 =batterydesign.F[11]*batterydesign.D[7]/100
-#assumed to be open but can be changed to enclosed as well - edit() 
+#assumed to be open but can be changed to enclosed as well - edit()
 batterydesign.D[8]	 =batterydesign.C[8]*batterydesign.E[8]/(batterydesign.C[6]*batterydesign.E[6]+batterydesign.C[7]*batterydesign.E[7]+batterydesign.C[8]*batterydesign.E[8])*100
 # batterydesign.D[8]	 =IF[chem.E[8]="Enclosed",chem.E[16],batterydesign.C[8]*batterydesign.E[8]/(batterydesign.C[6]*batterydesign.E[6]+batterydesign.C[7]*batterydesign.E[7]+batterydesign.C[8]*batterydesign.E[8])*100]
 batterydesign.E[8]	 =chem.E[22]
 batterydesign.F[8]	 =batterydesign.F[11]*batterydesign.D[8]/100
-#assumed to be open but can be changed to enclosed as well - edit() 
+#assumed to be open but can be changed to enclosed as well - edit()
 batterydesign.C[6]	 = chem.E[9]
 batterydesign.C[7]	 = chem.E[10]
 batterydesign.C[8]	 = chem.E[11]
@@ -97,7 +97,7 @@ if batterydesign.F[132]*batterydesign.F[62]<40
 batterydesign.F[70]	 =batterydesign.F[69]+2*1.5
 end
 if batterydesign.F[132]*batterydesign.F[62]>=40
-batterydesign.F[70]	 =batterydesign.F[69]+2*2;    
+batterydesign.F[70]	 =batterydesign.F[69]+2*2;
 end
 # batterydesign.F[70]	 =batterydesign.F[69]+2*IF[batterydesign.F[132]*batterydesign.F[62]<20,1,IF[batterydesign.F[132]*batterydesign.F[62]<40,1.5,2]]
 batterydesign.F[72]	 =batterydesign.F[139]
@@ -264,4 +264,7 @@ batterydesign.F[214]	 =batterydesign.F[202]*1000/batterydesign.F[212]
 batterydesign.F[217]	 =batterydesign.F[211]-batterydesign.F[67]/1000*(batterydesign.F[12]-batterydesign.F[13])
 batterydesign.F[218]	 =batterydesign.F[202]*1000/batterydesign.F[217]
 batterydesign.F[219]	 =batterydesign.F[141]*batterydesign.F[67]/batterydesign.F[63]/batterydesign.D[219]/1000
+batterydesign.F[166]	 =batterydesign.F[31]*[batterydesign.F[202]/batterydesign.F[77]/2.96]/1000;
+batterydesign.F[213]	 =batterydesign.F[202]/batterydesign.F[166];
+batterydesign.F[214]	 =batterydesign.F[202]/[batterydesign.F[113]*[batterydesign.F[202]/batterydesign.F[77]/2.96]/1000];
 end
