@@ -264,7 +264,8 @@ batterydesign.F[214]	 =batterydesign.F[202]*1000/batterydesign.F[212]
 batterydesign.F[217]	 =batterydesign.F[211]-batterydesign.F[67]/1000*(batterydesign.F[12]-batterydesign.F[13])
 batterydesign.F[218]	 =batterydesign.F[202]*1000/batterydesign.F[217]
 batterydesign.F[219]	 =batterydesign.F[141]*batterydesign.F[67]/batterydesign.F[63]/batterydesign.D[219]/1000
-batterydesign.F[166]	 =batterydesign.F[31]*[batterydesign.F[202]/batterydesign.F[77]/2.96]/1000;
+
+batterydesign.F[166]	 =batterydesign.F[31].*(batterydesign.F[202]./batterydesign.F[77]./2.96)/1000;
 batterydesign.F[213]	 =batterydesign.F[202]/batterydesign.F[166];
-batterydesign.F[214]	 =batterydesign.F[202]/[batterydesign.F[113]*[batterydesign.F[202]/batterydesign.F[77]/2.96]/1000];
+batterydesign.F[214]	 =batterydesign.F[202]/(batterydesign.F[113]*(batterydesign.F[202]/batterydesign.F[77]/2.96)/1000);
 end
