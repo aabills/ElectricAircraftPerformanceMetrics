@@ -288,6 +288,52 @@ function reseta(airplane)
             return airplane
 end
 
+        function seriesHybridAirplaneAllParameters(wingloading,AR,mass,C_D0,eta,battenergydensity)
+            #Played with often for various cases
+	    airplane=seriesHybridAirplane(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Float64[], Float64[], Float64[], Float64[], Float64[], 0, 0, 0, 0, 0, 0, 0, Int64[], 0, 0) 
+            totalEnergyStorageFraction=0
+            electricStorageWeightFraction=0
+            airplane.emptyweight = 0; #Weight of the aircraft with no energy storage or payload [737-300]
+            airplane.battEnergyDensity=battenergydensity
+            airplane.energyStorageFraction=0
+            airplane.wingloading=wingloading; #Average for 737/A320
+            airplane.S=mass./airplane.wingloading; #Wing reference Area calculated fm historical trends
+            airplane.AR=AR
+            airplane.b=sqrt(airplane.AR.*airplane.S); #Wingspan [737-300]
+            airplane.payload=0
+            airplane.batteryWeight=0
+            airplane.W=mass*9.81
+            totalEnergyStorageWeight=airplane.W.*totalEnergyStorageFraction; #Total weight allocated to energy storage
+            airplane.numPropulsers=2; #Number of propellers included
+            
+            ########### AERODYNAMIC AND EFFICIENCY PARAMETERS #############
+            
+            
+            airplane.C_D0=C_D0; #0 lift drag coefficient
+            airplane.e =1/(1.05+.007*airplane.AR*pi); #Oswald's efficiency Ratio
+            airplane.K=1/(pi*airplane.e*airplane.AR); #Aerodynamic Coefficient K
+            airplane.eta_prop=eta; #Propeller Efficiency
+            airplane.eta_mech=1;#Mechanical Efficiency
+            airplane.u_ground=.03; #Groundroll frictional coefficient
+            airplane.C_L = 0.1; #Lift Coefficient
+            airplane.alpha = 0; #Angle of attack
+            airplane.C_L_max = 2.16; #Maximum Lift Coefficient
+            
+            
+            ########## PROPULSION PARAMETERS #############
+            airplane.batteryWeight = totalEnergyStorageWeight.*electricStorageWeightFraction; #Weight of battery
+            airplane.fuelWeight = totalEnergyStorageWeight.*(1-electricStorageWeightFraction); #Weight of fuel
+            airplane.turbinePower = 500000; #Power of turbine [W]
+            airplane.electricStorageFraction = electricStorageWeightFraction; #Fraction of weight for energy that is stored electrically
+            airplane.batterySOC = 0; #State of Charge of the battery
+            airplane.turbineBSFC = 250; #Brake specific Fuel Consumption of the turbine
+            airplane.maxPower = 298280; #Maximum  Power provided by the engines [W]
+            
+
+		
+		return airplane;
+        end
+
 
 
 
