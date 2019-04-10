@@ -156,9 +156,9 @@ function descend(airplane,mission,dt,string)
             airplane.emptyweight = 0; #Weight of the aircraft with no energy storage or payload [737-300]
             airplane.battEnergyDensity=battenergydensity
             airplane.energyStorageFraction=0
-            airplane.wingloading=300; #Average for 737/A320
+            airplane.wingloading=400; #Average for 737/A320
             airplane.S=mass./airplane.wingloading; #Wing reference Area calculated fm historical trends
-            airplane.AR=13
+            airplane.AR=12
             airplane.b=sqrt(airplane.AR.*airplane.S); #Wingspan [737-300]
             airplane.payload=0
             airplane.batteryWeight=0

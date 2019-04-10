@@ -1,4 +1,4 @@
-include("includeme.jl")
+include("airplane_header.jl")
 function EMPRP(range,pax,MTOM,EWF)
 
 
@@ -36,8 +36,8 @@ end
 
 
 EWF_vec=.35:.01:.55
-p_out=readdlm("NB_passengers.csv",',');
-r_out=readdlm("NB_range.csv",',');
+p_out=readdlm("WB_passengers.csv",',');
+r_out=readdlm("WB_range.csv",',');
 
 se=zeros(21,41)
 powerpeak=zeros(21,41)
@@ -46,21 +46,21 @@ totalenergy=zeros(21,41)
 for n=1:21
     for m=1:41
         if((p_out[n,m]>2)&&(r_out[n,m]>2))
-        se[n,m],powerpeak[n,m],totalenergy[n,m]=EMPRP(r_out[n,m],p_out[n,m],100000,EWF_vec[n])
+        se[n,m],powerpeak[n,m],totalenergy[n,m]=EMPRP(r_out[n,m],p_out[n,m],250000,EWF_vec[n])
         end
     end
 end
 
 
-open("SE_NB_SHASHANK.csv","w") do io
+open("SE_WB_SHASHANK.csv","w") do io
     writedlm(io,se,',');
 end
 
-open("PP_NB_SHASHANK.csv","w") do io
+open("PP_WB_SHASHANK.csv","w") do io
     writedlm(io,powerpeak,',');
 end
 
-open("TE_NB_SHASHANK.csv","w") do io
+open("TE_WB_SHASHANK.csv","w") do io
     writedlm(io,totalenergy,',');
 end
 
