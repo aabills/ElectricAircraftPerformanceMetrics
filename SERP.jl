@@ -13,7 +13,7 @@ payload=0;
 battEnergyDensity=100;
 
 #current airplane model: beech king air B100 [close zunum competitor]
-airplane=seriesHybridAirplaneMBED(MTOM,battEnergyDensity);
+airplane=seriesHybridAirplaneBasicPropModelOn(MTOM,battEnergyDensity,4,1.72/2);
 mainMission=missionConstruct(range,cruisingAlt,rateOfClimb,takeOffDistance,rateOfDescent,payload);
 reserve=missionConstruct(reserveRange,loiterAlt,rateOfClimb,takeOffDistance,rateOfDescent,payload);
 airplane.POF=1;
