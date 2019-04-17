@@ -281,7 +281,6 @@ function descend(airplane,mission,dt,string)
         t_c=(airplane.thrust ./ airplane.numPropulsers) .* 2 ./ (mission.density[mission.n] .* airplane.velocity .* airplane.velocity .* 3.14159 .* airplane.propRadius .* airplane.propRadius);
         eta_prop = 2 ./ (1 .+ sqrt.(1 .+ t_c));
         airplane.eta_prop=eta_prop;
-        println(eta_prop)
     end
 
 
