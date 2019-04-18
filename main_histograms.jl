@@ -11,7 +11,7 @@ for n=1:num_sims
     SE_NB[n]=SERP_Distributions(500,150,100000)
     SE_WB[n]=SERP_Distributions(2000,300,250000)
     if(n%10==0)
-    @printf("Iteration: %f  RJSE: %f  NBSE: %f  WBSE: %f",n,SE_RJ[n],SE_NB[n],SE_WB[n]); 
+    @printf("Iteration: %f  RJSE: %f  NBSE: %f  WBSE: %f\n",n,SE_RJ[n],SE_NB[n],SE_WB[n]); 
     end
 end
 
