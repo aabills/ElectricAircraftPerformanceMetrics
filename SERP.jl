@@ -1,3 +1,4 @@
+using Distributions
 function SERP(range,pax,MTOM)
 
 
