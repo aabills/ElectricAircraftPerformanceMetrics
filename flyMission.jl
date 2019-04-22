@@ -16,7 +16,7 @@
                 append!(airplane.elapsedTime,0)
         append!(airplane.distTraveled,0)
     append!(airplane.powerProfile,0)
-    airplane=update(airplane,mainMission)
+    airplane,mainMission=update(airplane,mainMission)
     append!(airplane.segmentTransition,airplane.n)
             
         
@@ -24,9 +24,9 @@
             dt=1
             
             #Only use takeoff if propeller efficiency is calculated
-            if(true)
+            if(airplane.propmodelstatus)
                 
-                while(airplane.velocity<(1.2*sqrt(2*airplane.W/(airplane.S*1.225*0.5))))
+                while(airplane.velocity<(1.2*sqrt(2*airplane.W/(airplane.S*1.225*1.8))))
                     mainMission=atmosphericparameters(mainMission,airplane)
                     airplane,mainMission=takeoff(airplane,mainMission);
                  
@@ -39,12 +39,11 @@
                 
                 
                 
-                airplane.POF=airplane.POF+1
                 
                 
             end
     
-    
+        airplane.POF=airplane.POF+1;
     
     
     

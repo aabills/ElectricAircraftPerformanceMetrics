@@ -59,7 +59,7 @@ mutable struct seriesHybridAirplane
         POF::Int64;#Aircraft Phase of Flight::::::::
         segmentTransition::Array{Int64,1}
         #POF Phases: 
-        #            1: 
+        #            1: Takeoff
         #            2: Climb
         #            3: Transition
         #            4: Cruise
@@ -91,7 +91,7 @@ function cruise(airplane,mission,dt,string)
      airplane.n=airplane.n+1
      #Increments the plane along the mission by the
      #specified timestep in the cruise condition
-     airplane=update(airplane,mission)
+     airplane,mission=update(airplane,mission)
      if string=="main"
      	airplane.velocity=raymerEnergyVelocity(airplane,mission)
      elseif string=="reserve"
@@ -111,11 +111,11 @@ end
 
 function takeoff(airplane,mission)
     
-    CL=0.5;
+    CL=1.8;
     u=0.03;
     
     airplane.n=airplane.n+1;
-    airplane=update(airplane,mission);
+    airplane,mission=update(airplane,mission);
     q=(1/2) .* mission.density[mission.n] .* airplane.velocity .* airplane.velocity;
     airplane.thrust=airplane.maxPower*airplane.eta_prop*airplane.eta_mech/airplane.velocity;
         airplane.acceleration=(airplane.thrust-((airplane.C_D0+(airplane.K*CL*CL))*q*airplane.S)-(u*(airplane.W-(q*airplane.S*CL))))/(airplane.W/9.81);
@@ -139,8 +139,10 @@ function climb(airplane,mission,dt)
             airplane.n=airplane.n+1
             #This function increments the plane along the mission by the
             #specified timestep in the climb condition
-            airplane=update(airplane,mission)
-            mission.rateOfClimb=8-(((8-2)./mission.cruisingAlt).*airplane.altitudeProfile[end]);
+            mission.rateOfClimb=8-(((8-2)./mission.cruisingAlt).*airplane.altitudeProfile[end]);        
+            airplane,mission=update(airplane,mission)
+            
+    
             airplane.velocity=raymerPowerVelocity(airplane,mission)
 	
      append!(airplane.velocityProfile,airplane.velocity)
@@ -156,7 +158,7 @@ function descend(airplane,mission,dt,string)
             airplane.n=airplane.n+1
             #This function increments the plane along the mission by the
             #specified timestep in the descent condition
-            airplane=update(airplane,mission)
+            airplane,mission=update(airplane,mission)
             
 	    if string=="main" 
             	airplane.velocity=raymerEnergyVelocity(airplane,mission)
@@ -288,7 +290,7 @@ function descend(airplane,mission,dt,string)
 		airplane.gamma = asind(mission.rateOfClimb/airplane.velocity)
 	    elseif airplane.POF==8
 		airplane.gamma = asind(mission.rateOfClimb/airplane.velocity)
-	    elseif airplane.POF==5
+	    elseif airplane.POF==6
 		airplane.gamma = -3;
         mission.rateOfDescent=-airplane.velocity.*sind(airplane.gamma);
 	    elseif airplane.POF==10
@@ -299,17 +301,24 @@ function descend(airplane,mission,dt,string)
         mission.rateOfDescent=-airplane.velocity.*sind(airplane.gamma);
 	   else
 		airplane.gamma=0
-        
 	   end
     #Propeller Efficiency Model   
     if(airplane.propmodelstatus && mission.n>1)
         t_c=(airplane.thrust ./ airplane.numPropulsers) .* 2 ./ (mission.density[mission.n] .* airplane.velocity .* airplane.velocity .* 3.14159 .* airplane.propRadius .* airplane.propRadius);
         eta_prop = 2 ./ (1 .+ sqrt.(1 .+ t_c));
         airplane.eta_prop=eta_prop;
+        
+        airplane.thrust=airplane.maxPower * airplane.eta_prop *airplane.eta_mech / airplane.velocity;
+        q=mission.density[mission.n]*(1/2)*airplane.velocity*airplane.velocity
+        gamma_max = asind((airplane.thrust-(q*airplane.S*airplane.C_D0)-(airplane.K*airplane.W*airplane.W)/(q*airplane.S))/airplane.W);
+        if(airplane.gamma>gamma_max)
+            airplane.gamma=gamma_max;
+            mission.rateOfClimb=airplane.velocity*sind(airplane.gamma);
+        end
     end
 
-
-        return airplane
+        
+        return airplane,mission
             
         
 end

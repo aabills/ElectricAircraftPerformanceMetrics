@@ -33,10 +33,10 @@ annotation('textbox',[0.7 .62 .3 .3],'String',descend,'FontName','Palatino','Fon
 figure(2)
 clf
 bw=10;
-histogram(RJHISTOGRAM,'FaceColor',[0 0.5 0],'Normalization','probability','FaceAlpha',1,'NumBins',50,'BinWidth',bw)
+histogram(RJ_HISTOGRAM,'FaceColor',[0 0.5 0],'Normalization','probability','FaceAlpha',0.5,'NumBins',50,'BinWidth',bw)
 hold on
-histogram(NBHISTOGRAM,'FaceColor',[0 0 1],'Normalization','probability','FaceAlpha',1,'NumBins',50,'BinWidth',bw)
-histogram(WBHISTOGRAM,'FaceColor',[1 0 0],'Normalization','probability','FaceAlpha',1,'NumBins',50,'BinWidth',bw)
+histogram(NB_HISTOGRAM,'FaceColor',[0 0 1],'Normalization','probability','FaceAlpha',0.5,'NumBins',50,'BinWidth',bw)
+histogram(WB_HISTOGRAM,'FaceColor',[1 0 0],'Normalization','probability','FaceAlpha',0.5,'NumBins',50,'BinWidth',bw)
 set(gca,'FontSize',18,'FontName','Palatino','FontWeight','Bold')
 legend({"Regional","Narrow Body","Wide Body"},'FontSize',20,'FontName','Palatino','FontWeight','Bold')
 xlabel("Specific Energy, [^{Wh}/_{Kg}]",'FontName','Palatino','FontWeight','Bold','FontSize',25)
