@@ -59,7 +59,7 @@ mutable struct seriesHybridAirplane
         POF::Int64;#Aircraft Phase of Flight::::::::
         segmentTransition::Array{Int64,1}
         #POF Phases: 
-        #            1: Takeoff
+        #            1: 
         #            2: Climb
         #            3: Transition
         #            4: Cruise
@@ -108,6 +108,29 @@ function cruise(airplane,mission,dt,string)
 
      return airplane, mission	   
 end
+
+function takeoff(airplane,mission)
+    
+    CL=0.5;
+    u=0.03;
+    
+    airplane.n=airplane.n+1;
+    airplane=update(airplane,mission);
+    q=(1/2) .* mission.density[mission.n] .* airplane.velocity .* airplane.velocity;
+    airplane.thrust=airplane.maxPower*airplane.eta_prop*airplane.eta_mech/airplane.velocity;
+        airplane.acceleration=(airplane.thrust-((airplane.C_D0+(airplane.K*CL*CL))*q*airplane.S)-(u*(airplane.W-(q*airplane.S*CL))))/(airplane.W/9.81);
+    airplane.velocity=airplane.velocity+(airplane.acceleration*1)
+    
+     
+     append!(airplane.velocityProfile,airplane.velocity)
+     append!(airplane.elapsedTime,airplane.elapsedTime[airplane.n-1]+1)	
+     append!(airplane.distTraveled,airplane.distTraveled[airplane.n-1]+(airplane.velocity.*1))	
+     append!(airplane.powerProfile,airplane.maxPower)
+     append!(airplane.altitudeProfile,0)	
+    return airplane,mission
+    
+    
+end
   
 
 
@@ -150,6 +173,7 @@ function descend(airplane,mission,dt,string)
 	    if airplane.powerProfile[airplane.n]<0
                 airplane.powerProfile[airplane.n]=0
             end
+   
 		
 
 	return airplane,mission	
@@ -264,7 +288,7 @@ function descend(airplane,mission,dt,string)
 		airplane.gamma = asind(mission.rateOfClimb/airplane.velocity)
 	    elseif airplane.POF==8
 		airplane.gamma = asind(mission.rateOfClimb/airplane.velocity)
-	    elseif airplane.POF==6
+	    elseif airplane.POF==5
 		airplane.gamma = -3;
         mission.rateOfDescent=-airplane.velocity.*sind(airplane.gamma);
 	    elseif airplane.POF==10
@@ -275,6 +299,7 @@ function descend(airplane,mission,dt,string)
         mission.rateOfDescent=-airplane.velocity.*sind(airplane.gamma);
 	   else
 		airplane.gamma=0
+        
 	   end
     #Propeller Efficiency Model   
     if(airplane.propmodelstatus && mission.n>1)
@@ -304,9 +329,9 @@ function reseta(airplane)
             return airplane
 end
 
-function seriesHybridAirplaneAllParameters(wingloading,AR,mass,C_D0,eta,battenergydensity)
+function seriesHybridAirplaneAllParameters(wingloading,AR,mass,C_D0,eta,battenergydensity,numpropulsers,propradius)
             #Played with often for various cases
-	     airplane=seriesHybridAirplane(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,false,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Float64[], Float64[], Float64[], Float64[], Float64[], 0, 0, 0, 0, 0, 0, 0, Int64[], 0, 0,0)  
+	     airplane=seriesHybridAirplane(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, numpropulsers,true,propradius, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Float64[], Float64[], Float64[], Float64[], Float64[], 0, 0, 0, 0, 0, 0, 0, Int64[], 0, 0,0)  
             totalEnergyStorageFraction=0
             electricStorageWeightFraction=0
             airplane.emptyweight = 0; #Weight of the aircraft with no energy storage or payload [737-300]
@@ -343,7 +368,7 @@ function seriesHybridAirplaneAllParameters(wingloading,AR,mass,C_D0,eta,battener
             airplane.electricStorageFraction = electricStorageWeightFraction; #Fraction of weight for energy that is stored electrically
             airplane.batterySOC = 0; #State of Charge of the battery
             airplane.turbineBSFC = 250; #Brake specific Fuel Consumption of the turbine
-            airplane.maxPower = 298280; #Maximum  Power provided by the engines [W]
+            airplane.maxPower = mass*250; #Maximum  Power provided by the engines [W]
             
 
 		
@@ -388,7 +413,7 @@ end
             airplane.electricStorageFraction = electricStorageWeightFraction; #Fraction of weight for energy that is stored electrically
             airplane.batterySOC = 0; #State of Charge of the battery
             airplane.turbineBSFC = 250; #Brake specific Fuel Consumption of the turbine
-            airplane.maxPower = 298280; #Maximum  Power provided by the engines [W]
+            airplane.maxPower = mass*250; #Maximum  Power provided by the engines [W]
             
 
 		

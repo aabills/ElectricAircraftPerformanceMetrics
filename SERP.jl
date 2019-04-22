@@ -158,7 +158,7 @@ eta=rand(TriangularDist(eta_lower,eta_upper,eta_mode));
 EWF=rand(TriangularDist(EWF_lower,EWF_upper,EWF_mode));
     
 #current airplane model: beech king air B100 [close zunum competitor]
-airplane=seriesHybridAirplaneAllParameters(wingloading,AR,mass,C_D0,eta,battEnergyDensity);
+airplane=seriesHybridAirplaneAllParameters(wingloading,AR,mass,C_D0,eta,battEnergyDensity,4,1.72/2);
 mainMission=missionConstruct(range,cruisingAlt,rateOfClimb,takeOffDistance,rateOfDescent,payload);
 reserve=missionConstruct(reserveRange,loiterAlt,rateOfClimb,takeOffDistance,rateOfDescent,payload);
 airplane.POF=1;

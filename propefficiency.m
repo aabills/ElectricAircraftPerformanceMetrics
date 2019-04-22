@@ -12,4 +12,4 @@ T_c=2.*T./(V.*V.*rho.*pi.*R.*R);
 eta_prop=2./(1+sqrt(1+T_c));
 figure(1)
 plot(V,eta_prop);
-
+    airplane.acceleration=(airplane.thrust-((airplane.C_D0+(airplane.K*CL*CL))*q*airplane.S)-(u*(airplane.W-(q*airplane.S*CL))/(airplane.W/9.81)));

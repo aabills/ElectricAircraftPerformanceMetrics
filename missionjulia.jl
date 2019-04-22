@@ -61,10 +61,11 @@ end
 
 function atmosphericparameters(mission,airplane)
 	mission.n=mission.n+1;
-	atmos=atmosphere(airplane.altitudeProfile[airplane.n]);
+    atmos=atmosphere(airplane.altitudeProfile[airplane.n]);
 	append!(mission.temperature,temperature(atmos));
 	append!(mission.sos,speed_of_sound(atmos))
 	append!(mission.pressure,pressure(atmos));
 	append!(mission.density,density(atmos));
+
 	return mission;
 end
