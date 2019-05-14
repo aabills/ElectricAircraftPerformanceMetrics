@@ -10,6 +10,8 @@ function raymerPower(airplane,mission)
 raymerPower=((0.5*(airplane.velocity.^3)*airplane.S*airplane.C_D0*mission.density[mission.n])+(2*airplane.K*(airplane.W.^2)/mission.density[mission.n]/airplane.velocity/airplane.S)+(airplane.velocity*sind(airplane.gamma)*airplane.W))/airplane.eta_prop/airplane.eta_mech;
     
     airplane.thrust=raymerPower./airplane.velocity
+    
+    totalPower=raymerPower+airplane.auxPower;
    
-return raymerPower
+return totalPower
 end

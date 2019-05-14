@@ -48,7 +48,7 @@ mutable struct seriesHybridAirplane
         elapsedTime::Array{Float64,1}; #cumulative elapsed time vector
         
         #Other Performance Properties
-        turbinePower::Float64; #Power of turbine
+        auxPower::Float64; #Power of turbine
         maxPower::Float64; #Maximum  Power provided by the engines
         payload::Float64 #Mass of Payload
        
@@ -139,11 +139,12 @@ function climb(airplane,mission,dt)
             airplane.n=airplane.n+1
             #This function increments the plane along the mission by the
             #specified timestep in the climb condition
-            mission.rateOfClimb=8-(((8-2)./mission.cruisingAlt).*airplane.altitudeProfile[end]);        
+            mission.rateOfClimb=8-(((8-2)./mission.cruisingAlt).*airplane.altitudeProfile[end]);
+            airplane.velocity=raymerPowerVelocity(airplane,mission)
             airplane,mission=update(airplane,mission)
             
     
-            airplane.velocity=raymerPowerVelocity(airplane,mission)
+            
 	
      append!(airplane.velocityProfile,airplane.velocity)
      append!(airplane.elapsedTime,airplane.elapsedTime[airplane.n-1]+dt)
@@ -283,9 +284,11 @@ function descend(airplane,mission,dt,string)
             #This function updates dynamic parts of the aircraft flight
             #including weight, angle of climb(),etc.
             airplane.batteryMass=airplane.batteryWeight./9.81
-	
+        airplane.eta_prop=0.8;
 	    if airplane.POF==1
 		airplane.gamma = asind(mission.rateOfClimb/airplane.velocity)
+            
+        
 	    elseif airplane.POF==2
 		airplane.gamma = asind(mission.rateOfClimb/airplane.velocity)
 	    elseif airplane.POF==8
@@ -303,21 +306,25 @@ function descend(airplane,mission,dt,string)
 		airplane.gamma=0
 	   end
     #Propeller Efficiency Model   
-    if(airplane.propmodelstatus && mission.n>1)
+    if(airplane.propmodelstatus && mission.n>1 && airplane.POF<2)
+ 
+      
         t_c=(airplane.thrust ./ airplane.numPropulsers) .* 2 ./ (mission.density[mission.n] .* airplane.velocity .* airplane.velocity .* 3.14159 .* airplane.propRadius .* airplane.propRadius);
         eta_prop = 2 ./ (1 .+ sqrt.(1 .+ t_c));
         airplane.eta_prop=eta_prop;
         
         airplane.thrust=airplane.maxPower * airplane.eta_prop *airplane.eta_mech / airplane.velocity;
+
         q=mission.density[mission.n]*(1/2)*airplane.velocity*airplane.velocity
         gamma_max = asind((airplane.thrust-(q*airplane.S*airplane.C_D0)-(airplane.K*airplane.W*airplane.W)/(q*airplane.S))/airplane.W);
         if(airplane.gamma>gamma_max)
             airplane.gamma=gamma_max;
+            
             mission.rateOfClimb=airplane.velocity*sind(airplane.gamma);
         end
     end
 
-        
+        #airplane.eta_prop=(airplane.eta_prop+0.8)/2;
         return airplane,mission
             
         
@@ -363,7 +370,7 @@ function seriesHybridAirplaneAllParameters(wingloading,AR,mass,C_D0,eta,battener
             airplane.e =1/(1.05+.007*airplane.AR*pi); #Oswald's efficiency Ratio
             airplane.K=1/(pi*airplane.e*airplane.AR); #Aerodynamic Coefficient K
             airplane.eta_prop=eta; #Propeller Efficiency
-            airplane.eta_mech=1;#Mechanical Efficiency
+            airplane.eta_mech=eta;#Mechanical Efficiency
             airplane.u_ground=.03; #Groundroll frictional coefficient
             airplane.C_L = 0.1; #Lift Coefficient
             airplane.alpha = 0; #Angle of attack
@@ -373,11 +380,12 @@ function seriesHybridAirplaneAllParameters(wingloading,AR,mass,C_D0,eta,battener
             ########## PROPULSION PARAMETERS #############
             airplane.batteryWeight = totalEnergyStorageWeight.*electricStorageWeightFraction; #Weight of battery
             airplane.fuelWeight = totalEnergyStorageWeight.*(1-electricStorageWeightFraction); #Weight of fuel
-            airplane.turbinePower = 500000; #Power of turbine [W]
             airplane.electricStorageFraction = electricStorageWeightFraction; #Fraction of weight for energy that is stored electrically
             airplane.batterySOC = 0; #State of Charge of the battery
             airplane.turbineBSFC = 250; #Brake specific Fuel Consumption of the turbine
             airplane.maxPower = mass*250; #Maximum  Power provided by the engines [W]
+            
+            
             
 
 		
@@ -423,6 +431,51 @@ end
             airplane.batterySOC = 0; #State of Charge of the battery
             airplane.turbineBSFC = 250; #Brake specific Fuel Consumption of the turbine
             airplane.maxPower = mass*250; #Maximum  Power provided by the engines [W]
+            
+
+		
+		return airplane;
+end
+
+        function seriesHybridAirplaneKeywords(mass;AR=12,battenergydensity=800,numpropulsers=4,propulserradius=1.72,propmodel=true,wingloading=400,C_D0=0.018,maxPower=250*mass)
+            #Played with often for various cases
+	    airplane=seriesHybridAirplane(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, numpropulsers, propmodel ,propulserradius, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Float64[], Float64[], Float64[], Float64[], Float64[], 0, 0, 0, 0, 0, 0, 0, Int64[], 0, 0,0) 
+            totalEnergyStorageFraction=0
+            electricStorageWeightFraction=0
+            airplane.emptyweight = 0; #Weight of the aircraft with no energy storage or payload [737-300]
+            airplane.battEnergyDensity=battenergydensity
+            airplane.energyStorageFraction=0
+            airplane.wingloading=wingloading; #Average for 737/A320
+            airplane.S=mass./airplane.wingloading; #Wing reference Area calculated fm historical trends
+            airplane.AR=AR
+            airplane.b=sqrt(airplane.AR.*airplane.S); #Wingspan [737-300]
+            airplane.payload=0
+            airplane.batteryWeight=0
+            airplane.W=mass*9.81
+            totalEnergyStorageWeight=airplane.W.*totalEnergyStorageFraction; #Total weight allocated to energy storage
+            
+            ########### AERODYNAMIC AND EFFICIENCY PARAMETERS #############
+            
+            
+            airplane.C_D0=C_D0; #0 lift drag coefficient
+            airplane.e =1/(1.05+.007*airplane.AR*pi); #Oswald's efficiency Ratio
+            airplane.K=1/(pi*airplane.e*airplane.AR); #Aerodynamic Coefficient K
+            airplane.eta_prop=1; #Propeller Efficiency
+            airplane.eta_mech=0.9;#Mechanical Efficiency
+            airplane.u_ground=.03; #Groundroll frictional coefficient
+            airplane.C_L = 0.1; #Lift Coefficient
+            airplane.alpha = 0; #Angle of attack
+            airplane.C_L_max = 2.16; #Maximum Lift Coefficient
+            
+            
+            ########## PROPULSION PARAMETERS #############
+            airplane.batteryWeight = totalEnergyStorageWeight.*electricStorageWeightFraction; #Weight of battery
+            airplane.fuelWeight = totalEnergyStorageWeight.*(1-electricStorageWeightFraction); #Weight of fuel
+            airplane.turbinePower = 500000; #Power of turbine [W]
+            airplane.electricStorageFraction = electricStorageWeightFraction; #Fraction of weight for energy that is stored electrically
+            airplane.batterySOC = 0; #State of Charge of the battery
+            airplane.turbineBSFC = 250; #Brake specific Fuel Consumption of the turbine
+            airplane.maxPower = maxPower; #Maximum  Power provided by the engines [W]
             
 
 		

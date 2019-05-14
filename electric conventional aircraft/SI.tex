@@ -1,0 +1,285 @@
+\documentclass{achemso}
+\setkeys{acs}{email=false}
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage[fleqn]{amsmath}
+\usepackage{amsmath}
+\setlength{\mathindent}{0pt}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\graphicspath{ {Figures/} }
+\usepackage{amsmath}
+\usepackage[export]{adjustbox}
+\captionsetup[figure]{labelfont={small},textfont={small},labelfont={bf}}
+% \captionsetup[table]{labelfont={small},textfont={small},labelfont={bf}}
+
+\newcommand{\vv}[1]{{\textbf{\textcolor{red}{Venkat: #1}}}}
+\newcommand{\LF}[1]{{\textbf{\textcolor{blue}{Leif: #1}}}}
+\newcommand{\ssrip}[1]{{\textbf{\textcolor{blue}{SS: #1}}}}
+
+\title{Supporting Information:\\ FILL IN}
+
+\author{Alec Bills}
+%\homepage[]{Your web page}
+%\thanks{}
+\affiliation{%
+ Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, Pennsylvania 15213\\
+}
+\altaffiliation{Contributed equally to this work}
+
+
+\author{Shashank Sripad}
+%\homepage[]{Your web page}
+%\thanks{}
+\affiliation{%
+ Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, Pennsylvania 15213\\
+}
+\altaffiliation{Contributed equally to this work}
+
+
+\author{William L. Fredericks}
+\affiliation{%
+ Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, Pennsylvania 15213\\
+}
+\altaffiliation{Contributed equally to this work}
+
+\author{Venkatasubramanian Viswanathan}
+\email{venkvis@cmu.edu}
+%\homepage[]{Your web page}
+%\thanks{}
+\affiliation{%
+ Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, Pennsylvania 15213\\
+}
+
+
+\begin{document}
+
+\renewcommand\thefigure{S\arabic{figure}}
+
+
+% %\vspace{3cm}
+% %\noindent Summary: Data relevant to the manuscript, specifically on the details of the power consumption modeling of e-VTOL aircraft and the details of the battery modeling undertaken for the study are compiled below.
+
+\clearpage
+\section*{Current Li-ion Cells: C-rate vs Specific Energy}
+\vspace{-0.5cm}
+The maximum discharge C-rate and the specific energy for cylindrical cells from different manufacturers compiled in (Figure \ref{sif1}) includes: Samsung SDI ICR18650-26H\cite{samcells}, INR18650-15M\cite{samcells}, INR18650-30Q\cite{samcells}; LG Chem INR18650-M26\cite{lgcells}, INR18650-MH1\cite{lgcells}, INR18650-MJ1\cite{lgcells}, INR18650-M36T\cite{lgcells}, INR21700-M50\cite{lgcells}, INR18650-HG2\cite{lgcells}, INR18650-HE4\cite{lgcells}, INR18650-MH1\cite{lgcells}; Panasonic NCR18650-PF\cite{panasonic}, NCR18650-B\cite{panasonic}, NCR18650-GA\cite{panasonic}; MOLICEL INR-18650A\cite{molicel}, IHR-18650B\cite{molicel}, ICR-18650M\cite{molicel}, INR-18650-M30A\cite{molicel}; A123 Systems APR18650m1-A\cite{a123cells}, ANR26650m1-B\cite{a123cells2}.
+    
+
+ 
+
+% \begin{figure}[ht]
+% \includegraphics[width=0.6\textwidth]{S1.png}
+% \caption{\textbf{The specific energy and the maximum discharge rates for a number of widely used commercial Li-ion cylindrical cells is compiled above. We can observe that LFP based cells provide higher discharge rates, however, suffer from low specific energy. Cells based on NCA are primarily used in high specific energy applications but are capable of discharge rates under 5C. The list of cells compiled here is described in the text above.}}\label{sif1}
+% \end{figure}
+
+
+\vspace{-1.5cm}
+\section*{Representative Cell:}
+\vspace{-0.5cm}
+The representative cell model constructed for the purpose of this study is based on an NCA ($\mathrm{Ni_{0.8}Co_{0.15}Al_{0.05}O_{2}}$) cathode and a Graphite anode assembled in a cylindrical case with an 18650 form factor where the specifications for the materials are similar to that of the Samsung SDI INR18650-30Q which is proposed to be used in the NASA Maxwell X-57 aircraft.  The cell was constructed within the battery design routine of AutoLion-1D.\cite{kalupson2013autolion} The discharge characteristics of the cell under different discharge rates and temperatures is shown in (Figure \ref{sif2}).  The cell has a nominal specific energy of 245 Wh/kg at 25$^\circ$C and a discharge rate of 0.5C.  We assume a maximum C-rate limitation of 5C for the cell. The reduction in energy delivered by the cell for increasing discharge rates can be seen in (Figure \ref{sif2}a). 
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=0.48\textwidth]{S2a.png}
+% \includegraphics[width=0.48\textwidth]{S2b.png}
+% \caption{\textbf{(a) The discharge performance of the representative cell at different discharge rates and a fixed initial temperature. (b) The discharge performance of the cell at different temperatures for a fixed discharge current of 5A.}}
+%  \label{sif2} 
+% \end{figure} 
+
+\vspace{-1.6cm}
+\section*{Representative Battery Pack:}
+\vspace{-0.5cm}
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=0.7\textwidth]{S3.png}
+% \vspace{-0.3cm}
+% \caption{\textbf{A comparison of the discharge current for the 52.5kWh battery pack for different nominal pack voltage is shown above. As the nominal pack voltage increases i.e., the number of cells in series within the pack is increased, the discharge current reduces and this would be an important factor to consider within the battery pack design aspects for an e-VTOL aircraft. While the takeoff and landing segments have a similar power demands, since the aircraft operates at a much lower voltage for the landing segment, we can observe the higher discharge current during the landing segment.}} \label{sif3} 
+% \vspace{-3cm}
+% \end{figure}
+
+
+\clearpage
+\section*{Operational limits for the Representative cell:}
+\vspace{-0.5cm}
+The operation limits for State-of-Charge (SoC) are 1 and 0.25 for new cells. The state-of-charge change over the mission as performed over fresh cells is shown in (Figure \ref{sif4}).
+
+\vspace{-0.2cm}
+% \begin{figure}[h]
+% \centering
+% \adjincludegraphics[width=0.6\textwidth]{FigS4b.png}
+% \vspace{-0.3cm}
+% \caption{\textbf{The SoC depletion which shows the operational limits used for the mission.}} \label{sif4} 
+% \vspace{-1.5cm}
+% \end{figure}
+
+% \section*{Battery Degradation:}
+% \vspace{-10pt}
+% Battery degradation is a result of several parasitic processes\cite{alst1,alst2,alst3,wang_degradation} and the details of which are shown below:
+% \begin{gather*}
+% \mathrm{
+% j_{SEI} = -k_{o,SEI}.\;c^{s}_{solvent}.\;exp \big[  -\frac{\alpha_{c,SEI} .F   }{  RT }. \big(  \phi_s - \phi_e - I.R_{film}-U_{SEI}\big)\big]}\\
+% \mathrm{j_{PL} = -i_{o,PL}.\;exp\big[  -\frac{\alpha_{c,PL}.  F}{  RT }.\big(  \phi_s - \phi_e - I.R_{film}        \big)        \big]}\\
+% \mathrm{\frac{d\epsilon_{AM}}{dt} = -k_{AMI}.I_{total}}
+% \end{gather*}
+% where the side currents for each of the degradation processes for Solid-Electrolyte Interphase (SEI), ($\mathrm{j_{SEI}}$), for the Lithium plating, ($\mathrm{j_{PL}}$), and the last rate equation captures the Active Material Isolation along with the total current, (I). The other constants from the degradation sub-model are the rate constants ($\mathrm{k_{o,SEI}=1\times10^{-12}\;m/s}$)\cite{wang_degradation}, ($\mathrm{k_{AMI}=2\times10^{-14}m/s}$) and the exchange current density, ($\mathrm{i_{o,PL}=0.001A/m^2}$)\cite{wang_degradation}.  The ($\mathrm{\alpha}$'s) are the cathodic transfer coefficients. ($\mathrm{c^{s}_{solvent}}$), is the concentration of the solvent. The ($\mathrm{\phi}$'s) are the potentials of the electrode and liquid phases. ($\mathrm{R_{film}}$) is the resistance of the SEI layer.
+
+\section*{Representative Power Profile:}
+\vspace{-0.5cm}
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=0.6\textwidth]{mission3.png}
+% \caption{\textbf{The power profile for each mission segment of a typical mission is shown above. The high-power peaks at the beginning and end of flight present a challenge to battery discharge rate capabilities. The longest segment, cruise, is at a significantly lower power, demonstrating the advantage of transitioning to fixed-wing flight for the majority of the time. The dashed red line indicates returning to cruise altitude, flying at cruise speed for 30 minutes, and then descending to the hover altitude.}}
+%  \label{fig:powerbase1} 
+% \end{figure} 
+
+
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=0.6\textwidth]{mission2.png}
+% \caption{\textbf{The power profile for the same parameters as the typical mission, but with transition to and from vertical flight set to hover power for 90 seconds. Hover power is found with the same vertical power equation as takeoff and landing with vertical climb set to zero. The operational range is lower as more energy is expended in vertical and transitioning flight under these assumptions. Operational testing and deployment of these novel structural and propulsive designs will lead to more certain conventions for estimating transition performance.}}
+%  \label{fig:powerbase2} 
+% \end{figure} 
+
+% \vspace{-1.3cm}
+
+\section*{Power Equations:}
+\vspace{-0.5cm}
+Looking first at the vertical momentum theory power ($\mathrm{P_{vertical}}$) equation,
+\begin{gather*}
+    \mathrm{P_{vertical} =  \Bigg[ \dfrac{f\ W}{FoM}\sqrt{\dfrac{f\ W/A}{2\ \rho}} + \dfrac{W\ V_{climb,v}}{2} \Bigg] / \eta_{mech}}
+    \label{eqn:momVert}
+\end{gather*}
+\noindent the figure of merit ($\mathrm{FoM}$) accounts for the ratio between ideal and actual power supplied by the rotors, and is assumed to be 0.7\cite{Raymer}. The disk area loading ($\mathrm{W/A}$) is assumed at 50 kg/m$\mathrm{^2}$ as a baseline assumption, the upper end of a typical civil helicopter range \cite{Raymer}, and varied 30\% in either direction to an ideal value of 35 kg/m$\mathrm{^2}$ and a poor performance value of 65 kg/m$\mathrm{^2}$. With the figure of merit fixed, lower disk loading is preferable because it corresponds to lower power in the high-discharge vertical segments described by the above equation. ($\mathrm{f}$) is a correction factor for the interference from the fuselage, and is set to the typical value 1.03. \cite{Raymer} Density of air, ($\mathrm{\rho}$) is calculated at flight altitude using the US standard atmosphere model. \cite{vTechAtmos} Ground level conditions for the density of air are considered between 0.974 kg/m$\mathrm{^3}$ as the poor performance case\cite{Raymer} and 1.225 kg/m$\mathrm{^3}$ as standard.\cite{Raymer} Climb rate ($V_{climb,v}$) is 500 feet-per-minute (fpm) for vertical climb and descent, though it is held at zero in the equation while calculating the power for vertical descent. Zero fpm during descent provides reasonable estimates for the minimum power necessary for safe descent as the rotors move into their own down-wash\cite{seddon}. Zero fpm climb rate also corresponds to `hover' conditions. A fixed hover for a set time of 90 seconds is considered as an alternative transition power requirement to the baseline assumption that transition power varies linearly between the neighboring segments. Aircraft weight ($\mathrm{W}$) is set by multiplying the specified takeoff mass by gravity. The combined mechanical efficiency of the motors and electric powertrain ($\mathrm{\eta_{mech}}$) is assumed to be $\mathrm{90\% \pm5\%}$ for all mission segments. 
+\newline
+
+\noindent Moving to the fixed-wing segment power ($\mathrm{P_{fixed-wing}}$) equation, \cite{Raymer}
+\begin{gather*}
+    \mathrm{P_{fixed-wing} = \Big[ W\ V_v + \frac{W\ V}{L/D}\Big] / (\eta_{mech}\ \eta_{prop})}
+    \label{eqn:fixedP}
+\end{gather*}
+
+the efficiency of the propellers ($\mathrm{\eta_{prop}}$) is assumed to be 80\%\cite{Raymer}  with sensitivity range $\mathrm{\pm 10\%}$ for all fixed-wing segments.The vertical velocity component ($\mathrm{V_v}$) is zero for cruise, 900 fpm for climb, and -500 fpm for descent. The lift-to-drag ratio ($\mathrm{{L}/{D}}$) is set based off a tilt-rotor estimate. \cite{uberMcDonald} It would certainly vary across configuration and design parameters, but this would affect the range and cruise performance rather than the vertical flight performance. With takeoff and landing the segments of interest for battery analysis, the average value for the best-performing configuration, tilt-rotor, was used. This value, set to 14, is the maximum lift-to-drag ratio ($\mathrm{{L}/{D}_{max}}$), which is the ratio during cruising flight. Setting $\mathrm{{L}/{D}_{max}}$ allowed disk loading to vary without trying to predict the trade-offs between disk loading and lift-to-drag ratio. The operating conditions for minimum power (descent and climb) and maximum range (cruise) are discussed next because both $\mathrm{{L}/{D}}$ and forward velocity ($\mathrm{V}$) are segment-specific. 
+
+% Wing reference area ($\mathrm{S}$) is defined by the typical wing loading ($\mathrm{W/S}$) for a general aviation aircraft, 83 kg/m$\mathrm{^2}$.\cite{Raymer} The zero-lift drag coefficient ($\mathrm{C_{D_0}}$) is approximated as the average of values compiled for 93 light sport and general aviation aircraft \cite{Harloff}, with a sensitivity range of $\pm$0.014. Lastly, the induced drag correction factor ($\mathrm{K}$) is a function of the aspect ratio ($\mathrm{a_r}$), which is based on low-sweep, subsonic aircraft \cite{Raymer} and follows
+% \begin{gather*}
+% \mathrm{K = \dfrac{1}{\pi\ \epsilon \ a_r}}
+% \end{gather*}
+%  where the Oswald efficiency factor ($\mathrm{\epsilon}$) can be approximated \cite{Raymer} for straight-wing aircraft using:
+%  \begin{gather*}
+%  	\mathrm{\epsilon = 1.78(1 - 0.45\ {a_r}^{0.68}) - 0.64} .
+%  \end{gather*}
+
+\vspace{-0.5cm}
+\section*{Minimum Power Conditions:}
+\vspace{-0.5cm}
+Forward velocity is set to the minimum power velocity ($\mathrm{V_{Min Power}}$) for fixed-wing climb and descent\cite{Raymer}. To do this, the equation for fixed-wing power is differentiated with respect to velocity. Setting this new expression to zero, velocity can be solved at the minimum. Some assumptions must be made about the Lift and Drag properties beyond the given $\mathrm{{L}/{D}}$ value, so the equation for power is expanded in the following equation, \cite{Raymer}
+
+\begin{gather*}
+    \mathrm{P_{fixed-wing} = \Big[ W\ V_v + \frac{1}{2} \rho\ V^3\ S\ C_{D_0} + \frac{K\ W^2}{1/2\ \rho\ V\ S}\Big] / (\eta_{mech}\ \eta_{prop})}
+\end{gather*}
+
+Wing reference area ($\mathrm{S}$) is defined by the typical wing loading ($\mathrm{W/S}$) for a general aviation aircraft, 83 kg/m$\mathrm{^2}$,\cite{Raymer} with a range of $\mathrm{\pm 25\%}$, i.e. the range 63 kg/m$\mathrm{^2}$ to 103 kg/m$\mathrm{^2}$. The terms $\mathrm{C_{D_0}}$ and $\mathrm{K}$ are the zero-lift drag coefficient and lift-dependent correction factor respectively. They emerge from representing the total drag coefficient ($\mathrm{C_D}$) as a function of the lift coefficient ($\mathrm{C_L}$) as follows, \cite{Raymer}
+\begin{gather*}
+    \mathrm{C_D = C_{D_0} + K\ C_L^2}
+\end{gather*}
+
+$\mathrm{C_{D_0}}$ is structural, and assumed to be 0.03 for this analysis. Similar to the lift-to-drag ratio, $\mathrm{K}$ is a measure of the Drag penalty for a given Lift. Because of this, $\mathrm{K}$ can be represented in terms of the cruise lift-to-drag ratio, $\mathrm{{L}/{D}_{max}}$, by combining both versions of the fixed-wing power equation, resulting in,
+\begin{gather*}
+    \mathrm{K = \frac{1}{4\ C_{D_0}\ (L/D)_{max}^2}}
+\end{gather*}
+
+The derivative of the fixed-wing power equation with respect to forward velocity results in,
+\begin{gather*}
+\mathrm{\frac{dP}{dV} = \dfrac{3}{2}\rho V^2 S\ C_{D0} - \dfrac{K W_{TO}^2}{1/2 \rho V^2 S}}
+\end{gather*}
+which can be solved for velocity as follows,
+\begin{gather*}
+ \mathrm{V_{Min Power} = \sqrt{\dfrac{2\ W}{\rho\ S}\sqrt{\dfrac{K}{3C_{D_0}}}}}
+\end{gather*}
+
+This can be plugged back into the expanded fixed-wing power equation along with $\mathrm{C_{D_0}}$, $\mathrm{K}$, $\mathrm{S}$, and $\mathrm{\rho}$ at the appropriate flight altitude. To use the simplified equation, the lift-to-drag ratio must be adjusted for minimum power conditions. $\mathrm{{L}/{D}_{MinPower}}$ is 0.866($\mathrm{{L}/{D}_{max}}$), which is used for fixed-wing climb and descent. \cite{Raymer}
+
+\vspace{-0.5cm}
+\section*{Maximum Range Conditions:}
+\vspace{-0.5cm}
+For cruise, velocity is set to the maximum range velocity ($\mathrm{V_{Max Range}}$). The equation for range is differentiated with respect to velocity and set to zero to solve for the maximum. 
+
+Range ($\mathrm{R}$) is discharge time, i.e. segment energy ($\mathrm{E}$) over average segment power ($\mathrm{P}$), multiplied by velocity:
+\begin{gather*}
+\mathrm{R = \dfrac{E}{P} V}
+\end{gather*}
+Power is constant and equal to drag times velocity at steady, level flight\cite{Raymer}, $\mathrm{P = DV}$.
+\begin{align*}
+R & = \dfrac{E}{P} V = \dfrac{E}{D\ V} V = \dfrac{E}{D}\\
+  &=\dfrac{E}{1/2 \rho V^2 S (C_{D0} + K C_L^2)}\\
+       &= \dfrac{E}{1/2 \rho V^2 S C_{D0} + \dfrac{K W_{TO}^2}{1/2 \rho V^2 S}}\\
+       &= \dfrac{E}{1/2 \rho V^2 S C_{D0} + \dfrac{K W_{TO}^2}{1/2 \rho V^2 S}}.
+\end{align*}
+
+To maximize range for a given energy, the derivative is set to zero, $\mathrm{\frac{dR}{dV} = 0}$ and rearranging to solve for velocity results in:
+\begin{gather*}
+\mathrm{4 E \rho S V (4 K W_{TO}^2 - C_{D0} \rho^2 S^2 V^4) = 0}
+\end{gather*}
+\begin{gather*}
+    \mathrm{V_{Max Range} = \sqrt{\dfrac{2\ W}{\rho\ S}\sqrt{\dfrac{K}{C_{D_0}}}}}
+    \label{eqn:maxrange}
+\end{gather*}  
+
+As presented above, the lift-to-drag ratio for maximum range is $\mathrm{{L}/{D}_{max}}$, 14.
+\vspace{-0.5cm}
+\section*{Mass Properties:}
+\vspace{-0.5cm}
+The power and energy requirements depend on the gross takeoff mass ($\mathrm{GTOM}$) of the vehicle. $\mathrm{GTOM}$ is defined by: 
+\begin{gather*}
+\mathrm{GTOM = M_{pay} + \dfrac{W_e}{W} GTOM + M_{batt}}
+\end{gather*}
+Payload mass ($\mathrm{M_{pay}}$) is assumed to be 100 kg per passenger. The empty weight ratio ($\mathrm{{W_e}/{W}}$), assumed to be in the range of 0.55 \cite{mit2018vtolOptim} to 0.65 \cite{uber2017air}, accounts for structural mass as a fraction of the total. Battery mass ($\mathrm{M_{batt}}$) is a function of the total energy, determined by 
+\begin{gather*}
+\mathrm{M_{batt} = S_E \int P(t, GTOM) \ dt}
+\end{gather*}
+where ($\mathrm{S_E}$) is the specific energy of the batteries at the pack-level, which includes the cells along with the packing material and the thermal management systems. A 150 Wh/kg battery pack is considered to be representative of current Li-ion batteries\cite{epa2018model3} while a pack specific energy of 300 Wh/kg is considered the upper bound for the next few years. An input number of passengers, empty weight fraction, and takeoff mass gives the available battery mass. At a given specific energy, the energy requirements for every segment but cruise, including all reserve segments, can be calculated. Because power and velocity are constant during cruise, the remaining energy gives the range that can be accomplished in the cruise segment. This in turn leads to the total operational range for the input parameters. 
+\vspace{-0.5cm}
+\section*{Mission Variation Effects:}
+\vspace{-0.5cm}
+Without Federal Aviation Administration (FAA) regulations for e-VTOLs, mission requirements can only be assumed based on likely approximations or existing regulations for similar aircraft. One of these is the method by which transition power is approximated. The model used in this viewpoint assumes that as the aircraft begins to move forward after taking off vertically, the wings will gradually take over the burden of Lift until the transition is complete and the aircraft is in fixed-wing flight conditions. The power required for this is assumed to change linearly from the power required to hover to the power required for fixed-wing climb over a 120 second period. Similarly, the power to transition from descent to vertical landing is assumed to vary linearly between those respective power requirements. \cite{boeing2017vtolCost} This can be seen in (Figure \ref{fig:powerbase1}). Another method is to fix transition power at hover power by using the vertical power equation with a climb rate of zero. \cite{NASA2018vtolTech} The power profile resulting from this assumption, with a 90 second transition time, can be seen in Figure \ref{fig:powerbase2}. The peak discharge properties are not affected in this case, but transition uses more energy, leaving less for the cruise segment. Under the same ideal conditions that yielded 73 miles of operational range with the linear power transition, assuming a 90 second hover instead results in a 66 mile range. 
+
+Another requirement that has not yet been specified by the FAA is the `reserve fuel' requirement. A common solution is to use the requirements already in place for helicopters. Under the more conservative Instrument Flight Rules (IFR), poor weather conditions that limit visibility, \textit{14 CFR 91.167} specifies that helicopters must have enough reserve energy to fly for 30 minutes at cruise speed. \cite{FAR14} The model in this viewpoint uses these IFR requirements, but if the FAA were to specify a shorter reserve time it could result in a longer operational range. \textit{14 CFR 91.151} gives the requirements for Visual Flight Rules (VFR), in which conditions do not restrict visibility as with IFR. Flight in VFR conditions requires only a 20-minute reserve at cruising speed. \cite{FAR14} Under this reduced reserve requirement, the operational range would increase from 73 miles to 83 miles for the idealized case discussed in this viewpoint. Under both alternative assumptions discussed in this section, a 90-second-hover transition and a 20-minute reserve, the ideal operational range is 78 miles. 
+
+
+% Power is force times velocity, so the power balance for fixed-wing flight must balance the the weight, ($\mathrm{W}$), and the drag, ($\mathrm{D}$), multiplied by the vertical and forward velocities respectively:
+% \begin{gather*}
+% \mathrm{P_{fixed-wing} =W\ V_v + D\ V}
+% \end{gather*}
+
+% Drag can be represented as the dynamic pressure, ($\mathrm{\frac{1}{2}\rho V^2 }$), multiplied by the reference area, ($\mathrm{S}$), and a drag coefficient, ($\mathrm{C_{D}}$):
+
+% \begin{gather*}
+% \mathrm{... =W\ V_v + \frac{1}{2}\rho V^2 S C_D \ V}
+% \end{gather*}
+
+% The drag coefficient can further be broken into the zero-lift drag coefficient, ($\mathrm{C_{D_0}}$), and a term, ($\mathrm{K C_L^2}$), dependent on the lift-coefficient, ($\mathrm{C_L}$):
+
+% \begin{gather*}
+% \mathrm{... =W\ V_v + \frac{1}{2}\rho V^2 S (C_{D_0} + K C_L^2) \ V}
+% \end{gather*}
+
+
+
+% \begin{gather*}
+% \mathrm{... =W\ V_v + \frac{1}{2}\rho V^3 S (C_{D_0} + \dfrac{K W^2}{1/2 \rho V S })}
+% \end{gather*}
+
+
+
+
+
+
+
+\clearpage
+% \bibliography{rsc.bib} %You need to replace "rsc" on this line with the name of your .bib file
+% \bibliographystyle{achemso} %the RSC's .bst file
+
+\end{document}

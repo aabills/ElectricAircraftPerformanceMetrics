@@ -1,7 +1,70 @@
 using Distributions
 function SERP(range,pax,MTOM)
-
-
+    EWF=0.395;
+    if (MTOM<=75000)#Regional
+        wingloading_lower=292
+        wingloading_upper=565
+        wingloading_mode=450
+        
+        AR_lower=7.62
+        AR_upper=12.6
+        AR_mode=12
+        
+        C_D0_lower=.014
+        C_D0_upper=.024
+        C_D0_mode=.016
+        
+         eta_lower=.85
+        eta_upper=.95
+        eta_mode=.9
+        
+        EWF_lower=.35
+        EWF_upper=.5
+        EWF_mode=.4
+        
+    elseif(MTOM<=125000)#Narrow Body
+        wingloading_lower=433.58
+        wingloading_upper=788.617
+        wingloading_mode=500
+                
+        AR_lower=7.795
+        AR_upper=11
+        AR_mode=10.3
+        
+        C_D0_lower=.014
+        C_D0_upper=.024
+        C_D0_mode=.016
+        
+        eta_lower=.85
+        eta_upper=.95
+        eta_mode=.9
+        
+        EWF_lower=.35
+        EWF_upper=.5
+        EWF_mode=.4
+        
+    else#Wide Body
+        wingloading_lower=504.35
+        wingloading_upper=755.98
+        wingloading_mode=600
+                
+        AR_lower=7.91
+        AR_upper=10.056
+        AR_mode=10
+        
+        C_D0_lower=.014
+        C_D0_upper=.024
+        C_D0_mode=.016
+        
+       eta_lower=.85
+        eta_upper=.95
+        eta_mode=.9
+        
+        EWF_lower=.35
+        EWF_upper=.5
+        EWF_mode=.4
+        
+      end
 
 range=range*1852;
 reserveRange=370000;
@@ -14,13 +77,14 @@ payload=0;
 battEnergyDensity=100;
 
 #current airplane model: beech king air B100 [close zunum competitor]
-airplane=seriesHybridAirplaneBasicPropModelOn(MTOM,battEnergyDensity,4,1.72/2);
+airplane=seriesHybridAirplaneAllParameters(wingloading_mode,AR_mode,MTOM,C_D0_mode,eta_mode,battEnergyDensity,4,1.72/2);
+airplane.auxPower=(1000*pax) + ((airplane.W));
 mainMission=missionConstruct(range,cruisingAlt,rateOfClimb,takeOffDistance,rateOfDescent,payload);
 reserve=missionConstruct(reserveRange,loiterAlt,rateOfClimb,takeOffDistance,rateOfDescent,payload);
 airplane.POF=1;
 
-PAXweight=100*9.81*pax;
-battweight=(MTOM*(1-.395)*9.81)-PAXweight;
+PAXweight=97.5*9.81*pax;
+battweight=(MTOM*(1-EWF)*9.81)-PAXweight;
 battmass=battweight/9.81;
 
 airplane,mainMission,reserve=flyMission(airplane,mainMission,reserve);
@@ -73,23 +137,24 @@ end
 
 
 function SERP_Distributions(range,pax,mass)
+    numpropellers=4;
 
     if (mass<=75000)#Regional
         wingloading_lower=292
         wingloading_upper=565
-        wingloading_mode=451
+        wingloading_mode=400
         
         AR_lower=7.62
         AR_upper=12.6
-        AR_mode=9.2
+        AR_mode=12
         
         C_D0_lower=.014
         C_D0_upper=.024
         C_D0_mode=.016
         
-        eta_lower=.65
-        eta_upper=.72
-        eta_mode=.685
+         eta_lower=.9
+        eta_upper=.95
+        eta_mode=.9
         
         EWF_lower=.35
         EWF_upper=.5
@@ -98,19 +163,19 @@ function SERP_Distributions(range,pax,mass)
     elseif(mass<=125000)#Narrow Body
         wingloading_lower=433.58
         wingloading_upper=788.617
-        wingloading_mode=616.98
+        wingloading_mode=500
                 
         AR_lower=7.795
-        AR_upper=10.47
-        AR_mode=9.188
+        AR_upper=11
+        AR_mode=11
         
         C_D0_lower=.014
         C_D0_upper=.024
         C_D0_mode=.016
         
-        eta_lower=.65
-        eta_upper=.72
-        eta_mode=.685
+        eta_lower=.9
+        eta_upper=.95
+        eta_mode=.9
         
         EWF_lower=.35
         EWF_upper=.5
@@ -119,23 +184,25 @@ function SERP_Distributions(range,pax,mass)
     else#Wide Body
         wingloading_lower=504.35
         wingloading_upper=755.98
-        wingloading_mode=651.68
+        wingloading_mode=600
                 
-        AR_lower=7.91
+        AR_lower=8
         AR_upper=10.056
-        AR_mode=9.02
+        AR_mode=10
         
         C_D0_lower=.014
-        C_D0_upper=.024
+        C_D0_upper=.022
         C_D0_mode=.016
         
-        eta_lower=.65
-        eta_upper=.72
-        eta_mode=.685
+         eta_lower=.9
+        eta_upper=.95
+        eta_mode=.9
         
         EWF_lower=.35
         EWF_upper=.5
         EWF_mode=.4
+        
+        numpropellers=6;
         
       end
 
@@ -158,7 +225,7 @@ eta=rand(TriangularDist(eta_lower,eta_upper,eta_mode));
 EWF=rand(TriangularDist(EWF_lower,EWF_upper,EWF_mode));
     
 #current airplane model: beech king air B100 [close zunum competitor]
-airplane=seriesHybridAirplaneAllParameters(wingloading,AR,mass,C_D0,eta,battEnergyDensity,4,1.72/2);
+airplane=seriesHybridAirplaneAllParameters(wingloading,AR,mass,C_D0,eta,battEnergyDensity,numpropellers,1.72/2);
 mainMission=missionConstruct(range,cruisingAlt,rateOfClimb,takeOffDistance,rateOfDescent,payload);
 reserve=missionConstruct(reserveRange,loiterAlt,rateOfClimb,takeOffDistance,rateOfDescent,payload);
 airplane.POF=1;

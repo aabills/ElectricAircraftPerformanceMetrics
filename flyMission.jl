@@ -1,6 +1,10 @@
  function flyMission(airplane,mainMission,reserve)
             #INPUTS: mission, reserve, plane
-        
+            #One Engine Inoperative Power Supply
+
+            V=sqrt(2*airplane.W/1.225/airplane.S*sqrt(airplane.K/3/airplane.C_D0));
+            airplane.maxPower=(((.5*1.225*V*V*V)*airplane.C_D0*airplane.S)+((2*airplane.K*airplane.W*airplane.W)/(1.225*airplane.S*V))+(airplane.W*V*sind(10)))/(.5);
+            
             #Initialize Saved Quantity Arrays
             airplane.powerProfile=Float64[]
             airplane.altitudeProfile=Float64[]
@@ -26,7 +30,7 @@
             #Only use takeoff if propeller efficiency is calculated
             if(airplane.propmodelstatus)
                 
-                while(airplane.velocity<(1.2*sqrt(2*airplane.W/(airplane.S*1.225*1.8))))
+                while(airplane.velocity<(1.2*sqrt(2*airplane.W/(airplane.S*1.225*2.2))))
                     mainMission=atmosphericparameters(mainMission,airplane)
                     airplane,mainMission=takeoff(airplane,mainMission);
                  
@@ -44,6 +48,7 @@
             end
     
         airplane.POF=airplane.POF+1;
+        append!(airplane.segmentTransition,airplane.n)
     
     
     
@@ -56,6 +61,7 @@
     # Climb [POF 2]
             while(airplane.altitudeProfile[airplane.n]<mainMission.cruisingAlt)
                 mainMission=atmosphericparameters(mainMission,airplane)
+                
                 airplane,mainMission=climb(airplane,mainMission,dt)
             end
             airplane.POF=airplane.POF+1

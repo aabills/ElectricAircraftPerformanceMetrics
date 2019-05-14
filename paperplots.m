@@ -4,9 +4,12 @@
 %Load Variables
 clc
 clear all
-load PaperPowerProfiles
-load HistogramData
-load contoursforpaper
+
+RJ_HISTOGRAM=dlmread('Data/RJ_HISTOGRAM.csv');
+NB_HISTOGRAM=dlmread('Data/NB_HISTOGRAM.csv');
+WB_HISTOGRAM=dlmread('WB_HISTOGRAM.csv');
+
+
 
 %% Plot Power Profiles
 figure(1)
@@ -33,10 +36,10 @@ annotation('textbox',[0.7 .62 .3 .3],'String',descend,'FontName','Palatino','Fon
 figure(2)
 clf
 bw=10;
-histogram(RJ_HISTOGRAM,'FaceColor',[0 0.5 0],'Normalization','probability','FaceAlpha',0.5,'NumBins',50,'BinWidth',bw)
+histogram(RJ_HISTOGRAM,'FaceColor',[0 0.5 0],'Normalization','probability','FaceAlpha',1,'NumBins',50,'BinWidth',bw)
 hold on
-histogram(NB_HISTOGRAM,'FaceColor',[0 0 1],'Normalization','probability','FaceAlpha',0.5,'NumBins',50,'BinWidth',bw)
-histogram(WB_HISTOGRAM,'FaceColor',[1 0 0],'Normalization','probability','FaceAlpha',0.5,'NumBins',50,'BinWidth',bw)
+histogram(NB_HISTOGRAM,'FaceColor',[0 0 1],'Normalization','probability','FaceAlpha',1,'NumBins',50,'BinWidth',bw)
+histogram(WB_HISTOGRAM,'FaceColor',[1 0 0],'Normalization','probability','FaceAlpha',1,'NumBins',50,'BinWidth',bw)
 set(gca,'FontSize',18,'FontName','Palatino','FontWeight','Bold')
 legend({"Regional","Narrow Body","Wide Body"},'FontSize',20,'FontName','Palatino','FontWeight','Bold')
 xlabel("Specific Energy, [^{Wh}/_{Kg}]",'FontName','Palatino','FontWeight','Bold','FontSize',25)
@@ -46,6 +49,13 @@ ylabel("Normalized Count",'FontName','Palatino','FontWeight','Bold','FontSize',2
 sern=200:25:1200;
 ewf=.35:.01:.55;
 sewb=200:50:2200;
+
+RJpassengers=dlmread('Data/RJ_PAX.csv');
+RJrange=dlmread('Data/RJ_RANGE.csv');
+NBpassengers=dlmread('Data/NB_PAX.csv');
+NBrange=dlmread('Data/NB_RANGE.csv');
+WBpassengers=dlmread('Data/WB_PAX.csv');
+WBrange=dlmread('data/WB_RANGE.csv');
 
 figure(3)
 clf
