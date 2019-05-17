@@ -75,7 +75,7 @@ payload=0;
 
 #current airplane model: beech king air B100 (close zunum competitor)
 airplane=seriesHybridAirplaneAllParameters(wingloading_mode,AR_mode,mass,C_D0_mode,eta_mode,battEnergyDensity,8,1.72/2);
-airplane.auxPower=(1000*pax) + ((airplane.W));
+airplane.auxPower=(1000*PAX) + ((airplane.W));
 mainMission=missionConstruct(2e6,cruisingAlt,rateOfClimb,takeOffDistance,rateOfDescent,payload);
 reserve=missionConstruct(reserveRange,loiterAlt,rateOfClimb,takeOffDistance,rateOfDescent,payload);
 airplane.POF=1;

@@ -5,8 +5,8 @@
 clc
 clear all
 
-RJ_HISTOGRAM=dlmread('Data/RJ_HISTOGRAM.csv');
-NB_HISTOGRAM=dlmread('Data/NB_HISTOGRAM.csv');
+RJ_HISTOGRAM=dlmread('RJ_HISTOGRAM.csv');
+NB_HISTOGRAM=dlmread('NB_HISTOGRAM.csv');
 WB_HISTOGRAM=dlmread('WB_HISTOGRAM.csv');
 
 

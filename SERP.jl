@@ -226,6 +226,7 @@ EWF=rand(TriangularDist(EWF_lower,EWF_upper,EWF_mode));
     
 #current airplane model: beech king air B100 [close zunum competitor]
 airplane=seriesHybridAirplaneAllParameters(wingloading,AR,mass,C_D0,eta,battEnergyDensity,numpropellers,1.72/2);
+airplane.auxPower=(1000*pax) + ((airplane.W));
 mainMission=missionConstruct(range,cruisingAlt,rateOfClimb,takeOffDistance,rateOfDescent,payload);
 reserve=missionConstruct(reserveRange,loiterAlt,rateOfClimb,takeOffDistance,rateOfDescent,payload);
 airplane.POF=1;
