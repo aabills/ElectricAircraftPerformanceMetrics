@@ -1,2 +1,6 @@
 Data/
 Pictures/
+wrap/
+*.csv
+error*
+output*
