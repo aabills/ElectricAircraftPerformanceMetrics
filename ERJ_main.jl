@@ -5,7 +5,7 @@ using SharedArrays
 @everywhere using Printf
 
 num_sims=10000
-num_mass_points = 100
+num_mass_points = 10
 
 low_mass=50000
 high_mass=74999
@@ -25,7 +25,7 @@ offset = 433.55
         range = (offset+rand(gamma(shape,scale)))/1.852
         SE_ERJ[n]=SERP_Distributions(range,107,MTOM)
     if(n%100==0)
-    @printf("Iteration: %f  NBSE: %f  WBSE: %f\n",n,SE_NB[n],SE_WB[n]);
+    @printf("Iteration: %f\n",n]);
     end
 end
 
