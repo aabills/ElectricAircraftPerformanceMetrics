@@ -4,3 +4,5 @@ wrap/
 *.csv
 error*
 output*
+*.png
+*.zip
