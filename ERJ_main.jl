@@ -13,7 +13,7 @@ high_mass=74999
 
 mass_vec = range(low_mass,stop=high_mass,length=num_mass_points)
 
-SE_ERJ=SharedArray{Float64,1}(num_sims,num_mass_points)
+SE_ERJ=SharedArray{Float64,2}(num_sims,num_mass_points)
 
 shape = 1.98
 scale = 308.41
