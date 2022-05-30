@@ -1,0 +1,4 @@
+name = "ElectricAircraftPerformanceMetrics"
+uuid = "73816e65-a9c3-46be-bef4-68622633ec05"
+authors = ["Alec Bills <abills@andrew.cmu.edu>"]
+version = "0.1.0"
