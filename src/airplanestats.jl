@@ -1,4 +1,3 @@
-using SpecialFunctions
 function mygamma(x,alpha,mu,k)
     probability=((k*gamma(alpha))^-1)*(Complex((x-mu)/k)^(alpha-1))*exp(-(x-mu)/k);
     if(!isreal(probability))
@@ -22,13 +21,3 @@ function mynormal(x,mu,sigma)
     end
     return probability
 end
-
-pdf_out=ones(10000,1);
-
-for n=1:10000
-    pdf_out[n]=mygamma(n,1,1,576,);
-end
-
-using Plots
-plot(pdf_out);
-

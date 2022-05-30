@@ -1,9 +1,11 @@
 #Power Profile Main    
-include("airplane_header.jl")
+using ElectricAircraftPerformanceMetrics
 using DelimitedFiles
-a,b,rj=SERP(350,75,50000)
-a,b,nb=SERP(500,150,100000)
-a,b,wb=SERP(2000,250,250000)
+
+
+a,b,rj=ElectricAircraftPerformanceMetrics.SERP(350,75,50000)
+a,b,nb=ElectricAircraftPerformanceMetrics.SERP(500,150,100000)
+a,b,wb=ElectricAircraftPerformanceMetrics.SERP(2000,250,250000)
 
 open("Data/misra/RJ_PowerProfile.csv","w") do io
     writedlm(io,rj.powerProfile,',');

@@ -1,4 +1,4 @@
-include("airplane_header.jl")
+using ElectricAircraftPerformanceMetrics
 using DelimitedFiles
 #Regional
 r_out_rj=zeros(21,41);
@@ -11,7 +11,7 @@ for weight_fraction=0.35:.01:0.55
    range_out=zeros(1,200);
         energy=zeros(1,200);
    for pax=1:100
-             range_out[pax],airplane,mainMission,reserve,energy[pax]=pnm_battweight(pax,50000,specific_energy,weight_fraction);
+             range_out[pax],airplane,mainMission,reserve,energy[pax]=ElectricAircraftPerformanceMetrics.pnm_battweight(pax,50000,specific_energy,weight_fraction);
              range_out[pax]=range_out[pax]/1852;
             #if(range_out[pax]<=1000)
             #    range_out[pax]=0;
@@ -60,7 +60,7 @@ for weight_fraction=0.35:.01:0.55
    range_out=zeros(1,200);
         energy=zeros(1,200);
    for pax=1:200
-             range_out[pax],airplane,mainMission,reserve,energy[pax]=pnm_battweight(pax,100000,specific_energy,weight_fraction);
+             range_out[pax],airplane,mainMission,reserve,energy[pax]=ElectricAircraftPerformanceMetrics.pnm_battweight(pax,100000,specific_energy,weight_fraction);
              range_out[pax]=range_out[pax]/1852;
             #if(range_out[pax]<=1000)
             #    range_out[pax]=0;
@@ -110,7 +110,7 @@ for weight_fraction=0.35:.01:0.55
    range_out=zeros(1,300);
         energy=zeros(1,300);
    for pax=1:300
-             range_out[pax],airplane,mainMission,reserve,energy[pax]=pnm_battweight(pax,250000,specific_energy,weight_fraction);
+             range_out[pax],airplane,mainMission,reserve,energy[pax]=ElectricAircraftPerformanceMetrics.pnm_battweight(pax,250000,specific_energy,weight_fraction);
              range_out[pax]=range_out[pax]/1852;
             #if(range_out[pax]<=1000)
             #    range_out[pax]=0;

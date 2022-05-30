@@ -9,3 +9,5 @@ output*
 .DS_Store
 .ipynb_checkpoints
 .vscode
+Manifest.toml
+figures/
