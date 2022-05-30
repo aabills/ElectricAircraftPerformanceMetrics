@@ -6,3 +6,6 @@ error*
 output*
 *.png
 *.zip
+.DS_Store
+.ipynb_checkpoints
+.vscode
